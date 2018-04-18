@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="distributedlock" />
+        <module name="dwr-push-server" />
+        <module name="msgpush" />
+        <module name="sessionshare" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="com.xsh.msgpush" target="1.7" />
+      <module name="distributedlock" target="1.7" />
+      <module name="dwr-push-server" target="1.7" />
+      <module name="msgpush" target="1.7" />
+      <module name="sessionshare" target="1.7" />
+      <module name="webtech" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

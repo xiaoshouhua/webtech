@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/msgpush/com.xsh.msgpush.iml" filepath="$PROJECT_DIR$/msgpush/com.xsh.msgpush.iml" />
+      <module fileurl="file://$PROJECT_DIR$/distributedlock/distributedlock.iml" filepath="$PROJECT_DIR$/distributedlock/distributedlock.iml" />
+      <module fileurl="file://$PROJECT_DIR$/msgpush/dwr-push-server/dwr-push-server.iml" filepath="$PROJECT_DIR$/msgpush/dwr-push-server/dwr-push-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/msgpush/dwrpushserver.iml" filepath="$PROJECT_DIR$/msgpush/dwrpushserver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/msgpush/msgpush.iml" filepath="$PROJECT_DIR$/msgpush/msgpush.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sessionshare/sessionshare.iml" filepath="$PROJECT_DIR$/sessionshare/sessionshare.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webtech.iml" filepath="$PROJECT_DIR$/webtech.iml" />
+    </modules>
+  </component>
+</project>

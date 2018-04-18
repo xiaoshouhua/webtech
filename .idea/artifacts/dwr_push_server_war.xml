@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="dwr-push-server:war">
+    <output-path>$PROJECT_DIR$/msgpush/dwr-push-server/target</output-path>
+    <root id="archive" name="dwr-push-server.war">
+      <element id="artifact" artifact-name="dwr-push-server:war exploded" />
+    </root>
+  </artifact>
+</component>
