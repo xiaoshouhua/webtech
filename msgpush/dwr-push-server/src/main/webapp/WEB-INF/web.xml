@@ -38,7 +38,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>dwr-invoker</servlet-name>
-		<url-pattern>/dwr/*</url-pattern>
+		<url-pattern>/js/dwr/*</url-pattern>
 	</servlet-mapping>
 	
 </web-app>
