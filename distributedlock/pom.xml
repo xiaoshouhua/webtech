@@ -8,14 +8,14 @@
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>com.xsh.webtech</groupId>
     <artifactId>distributedlock</artifactId>
-    <packing>pom</packing>
-
+    <packaging>pom</packaging>
     <name>distributedlock</name>
-    <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
+    <modules>
+        <module>redislock</module>
+        <module>zklock</module>
+    </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

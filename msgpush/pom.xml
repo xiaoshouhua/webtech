@@ -9,8 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>com.xsh.msgpush</artifactId>
-    <name>com.xsh.msgpush</name>
+    <artifactId>msgpush</artifactId>
+    <name>msgpush</name>
     <url>http://www.example.com</url>
     <modules>
         <module>dwr-push-server</module>
