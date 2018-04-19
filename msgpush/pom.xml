@@ -14,6 +14,7 @@
     <url>http://www.example.com</url>
     <modules>
         <module>dwr-push-server</module>
+        <module>websocket-push-server</module>
     </modules>
     <packaging>pom</packaging>
 
