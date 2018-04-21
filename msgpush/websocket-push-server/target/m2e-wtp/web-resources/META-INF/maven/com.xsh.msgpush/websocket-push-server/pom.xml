@@ -11,6 +11,5 @@
 
     <groupId>com.xsh.msgpush</groupId>
     <artifactId>websocket-push-server</artifactId>
-	<packaging>war</packaging>
-
+    <packaging>war</packaging>
 </project>
