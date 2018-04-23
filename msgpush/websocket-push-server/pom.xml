@@ -8,9 +8,18 @@
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>com.xsh.msgpush</groupId>
     <artifactId>websocket-push-server</artifactId>
-	<packaging>war</packaging>
-
+    <name>websocket-push-server</name>
+    <url>http://www.example.com</url>
+    <build>
+    	<finalName>websocket-push-server</finalName>
+    </build>
+    
+    <dependencies>
+	 	<dependency>  
+		   <groupId>javax.websocket</groupId>  
+		   <artifactId>javax.websocket-api</artifactId>  
+		   <version>1.1</version>  
+		</dependency>  
+    </dependencies>
 </project>
