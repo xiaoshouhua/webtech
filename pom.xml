@@ -12,6 +12,7 @@
         <module>msgpush</module>
       <module>sessionshare</module>
       <module>distributedlock</module>
+        <module>encrypt</module>
     </modules>
 
     <name>webtech</name>
