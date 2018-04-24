@@ -123,7 +123,7 @@
         
 	消息摘要算法
         
-             对称加密算法
+    对称加密算法
         
 	非对称加密算法 
         
@@ -153,64 +153,62 @@
     			
 #### 2.加密算法之消息摘要算法
     分类：
-		MD(Message Digest) 
-			分类：
-			     MD5
-				 MD家族（128位摘要信息）
-					-MD2、MD4
-			区别：
-				算法      摘要长度  实现方 
-				MD2   128    JDK  
-				MD4   128    Bouncy Castle 
-				MD5   128    JDK
-			特点：长度都是128位
-					
-		SHA(Secure Hash Algorithm) 
-			特点：安全散列算法、  
-			分类：
-				SHA-1、
-				SHA-2（SHA-224、SHA-256、SHA-384、SHA-512)
-			
-			区别：
-				 算法                   摘要长度         实现方 
-				SHA-1	   160     JDK
-				SHA-224	   224     Bouncy Castle	
-				SHA-256	   256     JDK
-				SHA-384	   384     JDK
-				SHA-512	   512     JDK
-			应用：
-				1.加入约定key  
-				2.增加时间戳 
-				3.排序 
-				
-				如：http://host:port/**?msg=1232o23asdlaskasjdpoew&timestamp=12322325324 
-				    msg:原始消息+key+时间戳	
-		
-		MAC(Message Authentication Code)
-			特点：融合MD、SHA 
-			
-			分类：
-				MAC(Message Authentication Code) 
-				HMAC(keyed-Hash Message Authentication Code),含有密钥的散列函数算法
-				  -MD系列：HmacMD2、HmacMD4、HmacMD5
-				  -sha系列：HmacSHA1、HmacSHA-224、HmacSHA-256、HmacSHA-384、HmacSHA-512 
-			
-			区别：
-				 算法                                摘要长度         实现方
-				HmacMD2		   128      Bouncy Castle	
-				HmacMD4         128      Bouncy Castle	
-				HmacMD5         128      JDK
-				HmacSHA1	       160      JDK
-				HmacSHA224	   224      Bouncy Castle	
-				HmacSHA256	   256      JDK
-				HmacSHA384	   384      JDK
-				HmacSHA512	   512      JDK
-			
-			其他实现算法：(均采用Bouncy Castle实现)
-				RipeMD 
-				Tiger 
-				Whirlpool 
-				GOST3411
+    
+    MD(Message Digest) 
+        分类：MD5、MD家族（128位摘要信息,包含MD2、MD4）
+        区别：
+            算法      摘要长度  实现方 
+            MD2   128    JDK  
+            MD4   128    Bouncy Castle 
+            MD5   128    JDK
+        特点：长度都是128位
+                
+    SHA(Secure Hash Algorithm) 
+        特点：安全散列算法、  
+        分类：
+            SHA-1、
+            SHA-2（SHA-224、SHA-256、SHA-384、SHA-512)
+        
+        区别：
+             算法     摘要长度   实现方 
+            SHA-1	   160      JDK
+            SHA-224	   224      Bouncy Castle	
+            SHA-256	   256      JDK
+            SHA-384	   384      JDK
+            SHA-512	   512      JDK
+        应用：
+            1.加入约定key  
+            2.增加时间戳 
+            3.排序 
+            
+            如：http://host:port/**?msg=1232o23asdlaskasjdpoew&timestamp=12322325324 
+                msg:原始消息+key+时间戳	
+    
+    MAC(Message Authentication Code)
+        特点：融合MD、SHA 
+        
+        分类：
+            MAC(Message Authentication Code) 
+            HMAC(keyed-Hash Message Authentication Code),含有密钥的散列函数算法
+              -MD系列：HmacMD2、HmacMD4、HmacMD5
+              -SHA系列：HmacSHA1、HmacSHA-224、HmacSHA-256、HmacSHA-384、HmacSHA-512 
+        
+        区别：
+             算法         摘要长度         实现方
+            HmacMD2		    128          Bouncy Castle	
+            HmacMD4         128          Bouncy Castle	
+            HmacMD5         128          JDK
+            HmacSHA1	    160          JDK
+            HmacSHA224	    224          Bouncy Castle	
+            HmacSHA256	    256          JDK
+            HmacSHA384	    384          JDK
+            HmacSHA512	    512          JDK
+        
+        其他实现算法：(均采用Bouncy Castle实现)
+            RipeMD 
+            Tiger 
+            Whirlpool 
+            GOST3411
 				
 #### 3. 加密算法之数字签名算法		
 	 描述：带有密钥（公钥，私钥）的【消息摘要算法】
@@ -221,16 +219,16 @@
 ##### 3.1 数字签名算法之RSA
 	 分类：MD、SHA两类
 	 区别：
-	    	算法             密钥长度           默认长度    签名长度     实现方
-		   MD2withRSA      512~65536(64的整数倍) 1024     与密钥相同    JDK
-		   MD5withRSA             ~~~           1024      ~~~         JDK
-		   SHA1withRSA            ~~~           1024      ~~~         JDK
-		   SHA224withRSA          ~~~           2048      ~~~         Bouncy Castle			
-		   SHA256withRSA          ~~~           ~~~       ~~~         Bouncy Castle	
-		   SHA384withRSA          ~~~           ~~~       ~~~         Bouncy Castle	
-		   SHA512withRSA          ~~~           ~~~       ~~~         Bouncy Castle	
-		   RIPEMD124withRSA       ~~~           ~~~       ~~~         Bouncy Castle	
-		   RIPEMD160withRSA       ~~~           ~~~       ~~~         Bouncy Castle	
+        算法             密钥长度           默认长度    签名长度     实现方
+       MD2withRSA      512~65536(64的整数倍) 1024     与密钥相同    JDK
+       MD5withRSA             ~~~           1024      ~~~         JDK
+       SHA1withRSA            ~~~           1024      ~~~         JDK
+       SHA224withRSA          ~~~           2048      ~~~         Bouncy Castle			
+       SHA256withRSA          ~~~           ~~~       ~~~         Bouncy Castle	
+       SHA384withRSA          ~~~           ~~~       ~~~         Bouncy Castle	
+       SHA512withRSA          ~~~           ~~~       ~~~         Bouncy Castle	
+       RIPEMD124withRSA       ~~~           ~~~       ~~~         Bouncy Castle	
+       RIPEMD160withRSA       ~~~           ~~~       ~~~         Bouncy Castle	
 
 	
 ##### 3.2 数字签名算法之DSA
@@ -249,7 +247,7 @@
 
 ##### 3.3 数字签名算法之ECDSA
      概述：EllipticalCurve Digital Signature Algorithm,椭圆曲线数字签名算法  
-     特点：速度快，强度高，签名短
+     特点：速度快、强度高、签名短
      应用场景：windows操作系统序列号
      区别：
           算法             密钥长度           默认长度    签名长度     实现方
