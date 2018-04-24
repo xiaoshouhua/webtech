@@ -123,7 +123,7 @@
         
 	消息摘要算法
         
-	 对称加密算法
+             对称加密算法
         
 	非对称加密算法 
         
@@ -134,25 +134,25 @@
 	安全协议
     
 #### 1.加密算法之Base64
-    ##### 算法实现：
+     算法实现：
         - Jdk自带 
         - Commons Codec 
         - Bouncy Castle
         
-    ##### 应用场景：
+     应用场景：
     	   e-mail，密钥，证书文件 
     	   
-    ##### 产生：邮件的历史问题 
+     产生：邮件的历史问题 
     
-    ##### 定义：基于64个字符的编码算法
+     定义：基于64个字符的编码算法
      
-    ##### 关于RFC 2045   
+     关于RFC 2045   
     
-    ##### 衍生：
+     衍生：
     			Base16、Base32、URLBase 64
     			
 #### 2.加密算法之消息摘要算法
-    #####分类：
+    分类：
 		MD(Message Digest) 
 			分类：
 			     MD5
@@ -212,8 +212,51 @@
 				Whirlpool 
 				GOST3411
 				
+#### 3. 加密算法之数字签名算法		
+	 描述：带有密钥（公钥，私钥）的【消息摘要算法】
+	 作用：验证数据完整性、认证数据来源、抗否认  
+	 遵循原则：私钥签名，公钥验证 
+	 常用算法：RSA、DSA、ECDSA
 		
-		 
-		验证数据完整性 
-		
-		数字签名核心算法
+##### 3.1 数字签名算法之RSA
+	 分类：MD、SHA两类
+	 区别：
+	    	算法             密钥长度           默认长度    签名长度     实现方
+		   MD2withRSA      512~65536(64的整数倍) 1024     与密钥相同    JDK
+		   MD5withRSA             ~~~           1024      ~~~         JDK
+		   SHA1withRSA            ~~~           1024      ~~~         JDK
+		   SHA224withRSA          ~~~           2048      ~~~         Bouncy Castle			
+		   SHA256withRSA          ~~~           ~~~       ~~~         Bouncy Castle	
+		   SHA384withRSA          ~~~           ~~~       ~~~         Bouncy Castle	
+		   SHA512withRSA          ~~~           ~~~       ~~~         Bouncy Castle	
+		   RIPEMD124withRSA       ~~~           ~~~       ~~~         Bouncy Castle	
+		   RIPEMD160withRSA       ~~~           ~~~       ~~~         Bouncy Castle	
+
+	
+##### 3.2 数字签名算法之DSA
+	 分类：
+	      DSS(Digital Signature Standard) 数字签名标准   
+	      DSA(Digital Signature Algorithm)数字签名算法  
+	      DSA仅包含数字签名
+     区别：
+          算法             密钥长度           默认长度    签名长度     实现方
+       SHA1withDSA      512~1024(64的整数倍)  1024      与密钥相同    JDK
+       SHA224withDSA          ~~~             ~~~       ~~~         Bouncy Castle			
+       SHA256withDSA          ~~~             ~~~       ~~~         Bouncy Castle	
+       SHA384withDSA          ~~~             ~~~       ~~~         Bouncy Castle	
+       SHA512withDSA          ~~~             ~~~       ~~~         Bouncy Castle	
+      
+
+##### 3.3 数字签名算法之ECDSA
+     概述：EllipticalCurve Digital Signature Algorithm,椭圆曲线数字签名算法  
+     特点：速度快，强度高，签名短
+     应用场景：windows操作系统序列号
+     区别：
+          算法             密钥长度           默认长度    签名长度     实现方
+       NONEwithECDSA        112~571           256        128           JDK/BC
+       RIPEMD160withECDSA	  ~~~		      ~~~        160           BC
+       SHA1withECDSA          ~~~             ~~~        160           JDK/BC
+       SHA224withECDSA	      ~~~             ~~~        224           BC
+       SHA256withECDSA JDK	  ~~~             ~~~        256           JDK/BC
+       SHA384withECDSAJDK     ~~~             ~~~        384           JDK/BC
+       SHA512withECDSAJDK	  ~~~             ~~~        512           JDK/BC

@@ -13,6 +13,7 @@
       <module>sessionshare</module>
       <module>distributedlock</module>
         <module>encrypt</module>
+        <module>jedis</module>
     </modules>
 
     <name>webtech</name>
