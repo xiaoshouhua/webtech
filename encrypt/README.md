@@ -258,3 +258,70 @@
        SHA256withECDSA JDK	  ~~~             ~~~        256           JDK/BC
        SHA384withECDSAJDK     ~~~             ~~~        384           JDK/BC
        SHA512withECDSAJDK	  ~~~             ~~~        512           JDK/BC
+       
+#### 4. 加密算法之对称加密算法
+     特点：数据安全,密钥管理复杂,是当前应用最广,使用最多的加密算法
+     是一种初等的加密算法
+     分类:
+        DES 
+        3DES 
+        AES 
+        PBE 
+        IDEA
+
+##### 4.1 对称加密算法之DES
+     DES(Data Encryption Standard)数据加密标准
+     
+     注意：98年后DES不断被破解,目前已经不具备安全性
+     
+     区别：
+         密钥长度  默认       工作模式           填充方式          实现方
+          56       56     ECB、CBC、PCBC、   NoPadding   
+                          CTR、CTS、CFB、    PKCS5Padding          JDK
+                          CFB8到128、OFB、   ISO10126Padding
+                          OFB8到128  
+        
+          64        56          ~~~          PKCS7Padding       Bound Castyle
+                                             ISO10126d2Padding
+                                             X932Padding
+                                             ISO7816d4Padding
+                                             ZeroBytePadding
+
+##### 4.2 对称加密算法之3DES
+    3DES(Triple DES或DESede)
+    
+    出现的原因:
+        DES存在的问题(1.违背柯克霍夫原则 2.安全问题)
+    
+    好处：
+        密钥长度增强
+    
+        迭代次数提高
+        
+    区别：
+         密钥长度    默认       工作模式           填充方式          实现方
+         112、168    168     ECB、CBC、PCBC、   NoPadding   
+                             CTR、CTS、CFB、    PKCS5Padding          JDK
+                             CFB8到128、OFB、   ISO10126Padding
+                             OFB8到128  
+        
+         112、168    168          ~~~          PKCS7Padding       Bound Castyle
+                                              ISO10126d2Padding
+                                              X932Padding
+                                              ISO7816d4Padding
+                                              ZeroBytePadding
+                                              
+##### 4.3 对称加密算法之AES
+    出现原因：DES算法存在漏洞,3DES效率比较低,速度较慢
+    优点：AES的优势之一是至今尚未被破解.
+    应用场景:通常用于移动通信系统加密以及基于SSH协议的软件（如SSH Client、Secure CRT)
+
+##### 4.4 对称加密算法之PBE
+    PBE（password based encryption）基于口令加密
+    特点：PBE算法结合了消息摘要算法和对称加密算法的优点
+          对已有算法的包装
+          盐 SALT
+          PBEWithMD5andDES
+    
+
+#### 5. 加密算法之非对称加密算法
