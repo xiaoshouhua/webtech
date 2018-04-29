@@ -34,7 +34,7 @@ public class DESTest {
 			
 			//key转换
 			DESKeySpec desKeySpec = new DESKeySpec(byteKey);
-			SecretKeyFactory  factory = SecretKeyFactory.getInstance("PBEWithMD5andDES");
+			SecretKeyFactory  factory = SecretKeyFactory.getInstance("DES");
 			Key convertKey = factory.generateSecret(desKeySpec);
 			
 			//加密算法/工作方式/填充方式

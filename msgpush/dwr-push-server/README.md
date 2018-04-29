@@ -79,7 +79,9 @@
     
     4.创建一个jsp页面
     
-
-参考： 1.http://directwebremoting.org/dwr/
-	 2.http://www.cnblogs.com/cyjch/archive/2012/02/16/2353758.html    
+参考： 
+	
+	 1.http://directwebremoting.org/dwr/
+	 2.http://www.cnblogs.com/cyjch/archive/2012/02/16/2353758.html 
+	 3.https://www.imooc.com/learn/784   
          
