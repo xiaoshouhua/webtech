@@ -14,6 +14,7 @@
       <module>distributedlock</module>
         <module>encrypt</module>
         <module>jedis</module>
+        <module>junit</module>
     </modules>
 
     <name>webtech</name>
