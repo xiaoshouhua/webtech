@@ -1,4 +1,4 @@
-
+https://blog.csdn.net/luomingkui1109/article/details/77512700
 
 ### 加解密算法
     1.安全和密码
@@ -23,7 +23,7 @@
         
 	加密秘钥 : 通过加密算法进行加密操作用的秘钥.
         
-	 解密 : 将密文转为明文的过程.
+	解密 : 将密文转为明文的过程.
         
 	解密算法 : 密文转为明文的算法.
         
@@ -260,6 +260,7 @@
        SHA512withECDSAJDK	  ~~~             ~~~        512           JDK/BC
        
 #### 4. 加密算法之对称加密算法
+     概述：对称加密指加密和解密使用相同密钥的加密算法
      特点：数据安全,密钥管理复杂,是当前应用最广,使用最多的加密算法
      是一种初等的加密算法
      分类:
@@ -325,3 +326,65 @@
     
 
 #### 5. 加密算法之非对称加密算法
+    概述：对称加密指加密和解密使用相同密钥的加密算法
+    应用场景：非对称加密算法是一种基于密钥的保密方法，需要公开密钥和私有密钥，在文件加密、尤其是网银中应用广泛。
+    分类： DH(Diffie-Hellman)密钥交换算法
+	  RSA-基于因子分解,应用最广,可用于加密或者数字签名
+	  ElGamal-基于离散对数
+	  ECC（Elliptical Curve Cryptography）-椭圆曲线加密
+ 
+##### 5.1 非对称加密算法之DH(密钥交换)
+    作用：解决对称加密带来的困扰（公钥如何传输） 
+    实现；构建本地密钥  
+    对称：
+        密钥长度          默认    工作模式   填充模式  实现方
+       512~1024（64倍数） 1024     无        无       JDK
+    实现步骤：
+       1.初始化发送方密钥
+          - KeyPairGenerator
+             通过KeyPairGenerator来得到KeyPair类的对象
+             
+             //创建KeyPairGenerator对象
+             KeyPairGenerator senderKeyPairGenerator = KeyPairGenerator.getInstance("DH");
+             
+          - KeyPair
+            
+             
+          - PublicKey
+            
+        
+       2.初始化接收方密钥
+          - KeyFactory
+             generatePublic()方法用来生成公钥
+             generatePrivate()方法用来生成私钥
+        
+          - X509EncodedKeySpec	
+              X509EncodedKeySpec类根据ASN.1标准进行密钥编码.
+              
+          - DHPublicKey
+        
+          - DHParameterSpec
+        
+          - KeyPairGenerator
+        
+          - PrivateKey
+             私钥
+             
+       3.密钥构建
+          - KeyAgreement
+              KeyAgreement类提供密钥一致性（或密钥交换）协议的功能
+              
+          - SecretKey
+       
+          - KeyFactory
+       
+          - X509EncodedKeySpec
+       
+          - PublicKey
+       
+       4.加密、解密
+          - Cipher 
+          
+##### 5.3 非对称加密算法之ElGamal      
+	   概述:公钥加密算法
+	    提供者：Bouncy Castle      
