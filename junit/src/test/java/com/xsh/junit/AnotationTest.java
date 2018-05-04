@@ -1,5 +1,9 @@
 package com.xsh.junit;
 
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+
 public class AnotationTest {
 	
 	/*
@@ -12,4 +16,22 @@ public class AnotationTest {
 	 * @RunWith: 可以更改测试运行器
 	 */
 
+	@Test
+    public void testDivide1() {
+		assertEquals(3, new Calculate().divide(6, 0));
+    }
+	
+	@Test(expected = ArithmeticException.class)
+    public void testDivide2() {
+		assertEquals(3, new Calculate().divide(6, 0));
+    }
+	
+	@Test(timeout = 3000,expected = InterruptedException.class)
+    public void testExec() throws InterruptedException {
+		System.out.println("此处代码会执行...");
+		
+		Thread.sleep(4000);
+		
+		System.out.println("此处代码不会会执行...");
+    }
 }
