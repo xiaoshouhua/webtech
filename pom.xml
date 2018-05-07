@@ -17,6 +17,8 @@
         <module>junit</module>
         <module>quartz</module>
         <module>protocol</module>
+        <module>cross-domain</module>
+        <module>annotation</module>
     </modules>
 
     <name>webtech</name>
