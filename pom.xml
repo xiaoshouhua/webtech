@@ -10,8 +10,8 @@
     <version>1.0.0</version>
     <modules>
         <module>msgpush</module>
-      <module>sessionshare</module>
-      <module>distributedlock</module>
+        <module>sessionshare</module>
+        <module>distributedlock</module>
         <module>encrypt</module>
         <module>jedis</module>
         <module>junit</module>
@@ -19,6 +19,9 @@
         <module>protocol</module>
         <module>cross-domain</module>
         <module>annotation</module>
+        <module>datasource</module>
+        <module>spike</module>
+        <module>qrcode</module>
     </modules>
 
     <name>webtech</name>

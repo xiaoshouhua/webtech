@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>使用jquery-qrcode生成二维码,支持中文</title>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.qrcode.min.js"></script>
+</head>
+<body>
+<div id="qrcode"></div>
+
+<br/><br/><br/><br/><br/>
+
+<div id="qrcode2"></div>
+
+<script type="text/javascript">
+function utf16to8(str) {  
+    var out, i, len, c;  
+    out = "";  
+    len = str.length;  
+    for(i = 0; i < len; i++) {  
+    c = str.charCodeAt(i);  
+    if ((c >= 0x0001) && (c <= 0x007F)) {  
+        out += str.charAt(i);  
+    } else if (c > 0x07FF) {  
+        out += String.fromCharCode(0xE0 | ((c >> 12) & 0x0F));  
+        out += String.fromCharCode(0x80 | ((c >>  6) & 0x3F));  
+        out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));  
+    } else {  
+        out += String.fromCharCode(0xC0 | ((c >>  6) & 0x1F));  
+        out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));  
+    }  
+    }  
+    return out;  
+}
+
+$(function(){
+	$('#qrcode').qrcode("i love you");
+	
+	$('#qrcode2').qrcode({width: 64,height: 64,text: utf16to8("我爱你,与你无关")});
+});
+</script>
+</body>
+</html>
