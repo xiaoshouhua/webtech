@@ -22,6 +22,8 @@
         <module>datasource</module>
         <module>spike</module>
         <module>qrcode</module>
+      <module>imgProcess</module>
+        <module>verfitycode</module>
     </modules>
 
     <name>webtech</name>
