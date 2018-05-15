@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<BaseInfoCodes>
+  <BedTypeCode description="床型编码">
+  	<BedType code="1000000">大床</BedType>
+  	<BedType code="2000000">双床</BedType>
+  	<BedType code="A000000">单床</BedType>
+  	<BedType code="3000000">3床</BedType>
+  	<BedType code="4000000">4床</BedType>
+	<BedType code="B000000">上下铺</BedType>
+	<BedType code="C000000">通铺</BedType>
+	<BedType code="D000000">榻榻米</BedType>
+	<BedType code="E000000">水床</BedType>
+	<BedType code="F000000">圆床</BedType>
+	<BedType code="G000000">拼床</BedType>
+	<BedType code="H000000">炕</BedType>
+  </BedTypeCode>
+</BaseInfoCodes>

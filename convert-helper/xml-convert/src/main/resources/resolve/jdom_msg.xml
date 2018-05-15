@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="GBK"?>
+<rss version="2.0">
+<channel>
+<title>&lt;![CDATA[这是一个JDOM方式生成xml,需要导入jdom-2.0.5.jar包]]&gt;</title>
+</channel>
+</rss>
+
