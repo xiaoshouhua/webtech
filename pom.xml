@@ -25,6 +25,7 @@
         <module>imgProcess</module>
         <module>verfitycode</module>
         <module>convert-helper</module>
+        <module>jsptag</module>
     </modules>
 
     <name>webtech</name>

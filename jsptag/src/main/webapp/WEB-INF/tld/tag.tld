@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+	version="2.0">
+	<description>JSP自定义标签</description>
+	<display-name>tx</display-name>
+	<tlib-version>1.0</tlib-version>
+	<short-name>tx</short-name>
+	<uri>www.xsh.org</uri>
+
+	<tag>
+		<!--该标签名称（必须元素） -->
+		<name>loginDate</name>
+		<!--该标签处理类的全限定名（必须元素） -->
+		<tag-class>com.xsh.tag.LoginDateTag</tag-class>
+		<!--指明该标签主题类型） -->
+		<body-content>empty</body-content>
+	</tag>
+	
+	<tag>
+		<!--该标签名称（必须元素） -->
+		<name>skipOrEvalBody</name>
+		<!--该标签处理类的全限定名（必须元素） -->
+		<tag-class>com.xsh.tag.SkipOrEvalBodyTag</tag-class>
+		<!--指明该标签主题类型） -->
+		<body-content>scriptless</body-content>
+	</tag>
+	
+	<tag>
+		<!--该标签名称（必须元素） -->
+		<name>skipOrEvalPage</name>
+		<!--该标签处理类的全限定名（必须元素） -->
+		<tag-class>com.xsh.tag.SkipOrEvalPageTag</tag-class>
+		<!--指明该标签主题类型） -->
+		<body-content>empty</body-content>
+	</tag>
+
+</taglib>
