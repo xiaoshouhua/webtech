@@ -3,9 +3,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
 	version="2.0">
-	<description>JSP自定义标签</description>
+	<description>JSP自定义标签2.0</description>
 	<display-name>tx</display-name>
-	<tlib-version>1.0</tlib-version>
+	<tlib-version>2.0</tlib-version>
 	<short-name>tx</short-name>
 	<uri>www.xsh.org</uri>
 
@@ -13,25 +13,25 @@
 		<!--该标签名称（必须元素） -->
 		<name>loginDate</name>
 		<!--该标签处理类的全限定名（必须元素） -->
-		<tag-class>com.xsh.tag.LoginDateTag</tag-class>
+		<tag-class>com.xsh.tag2.simpletag.LoginDateTag</tag-class>
 		<!--指明该标签主题类型） -->
 		<body-content>empty</body-content>
 	</tag>
 	
 	<tag>
-		<!--该标签名称（必须元素） -->
+		<!--标签功能:控制是否执行标签体内容 -->
 		<name>skipOrEvalBody</name>
 		<!--该标签处理类的全限定名（必须元素） -->
-		<tag-class>com.xsh.tag.SkipOrEvalBodyTag</tag-class>
+		<tag-class>com.xsh.tag2.simpletag.SkipOrEvalBodyTag</tag-class>
 		<!--指明该标签主题类型） -->
 		<body-content>scriptless</body-content>
 	</tag>
 	
 	<tag>
-		<!--防盗链 -->
+		<!--标签功能:是否执行标签结束后的内容 -->
 		<name>skipOrEvalPage</name>
 		<!--该标签处理类的全限定名（必须元素） -->
-		<tag-class>com.xsh.tag.SkipOrEvalPageTag</tag-class>
+		<tag-class>com.xsh.tag2.simpletag.SkipOrEvalPageTag</tag-class>
 		<!--指明该标签主题类型） -->
 		<body-content>empty</body-content>
 	</tag>
@@ -40,7 +40,7 @@
 		<!--迭代器 -->
 		<name>iterator</name>
 		<!--该标签处理类的全限定名（必须元素） -->
-		<tag-class>com.xsh.tag.IteratorTag</tag-class>
+		<tag-class>com.xsh.tag2.simpletag.IteratorTag</tag-class>
 		<!--指明该标签主题类型） -->
 		<body-content>scriptless</body-content>
 		<attribute>
@@ -56,45 +56,56 @@
 	</tag>
 	
 	<tag>
-		<!--连接器 -->
-		<name>conn</name>
+		<!--修改标签 -->
+		<name>bodyTag</name>
 		<!--该标签处理类的全限定名（必须元素） -->
-		<tag-class>com.xsh.tag.DBConnectionTag</tag-class>
+		<tag-class>com.xsh.tag2.simpletag.ModifyBodyTag</tag-class>
+		<!--指明该标签主题类型） -->
+		<body-content>scriptless</body-content>
+	</tag>
+	
+	<tag>
+		<!--if判断标签 -->
+		<name>if</name>
+		<!--该标签处理类的全限定名（必须元素） -->
+		<tag-class>com.xsh.tag2.simpletag.IFTag</tag-class>
 		<!--指明该标签主题类型） -->
 		<body-content>scriptless</body-content>
 		<attribute>
-			<name>driver</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		<attribute>
-			<name>url</name>
-			<required>true</required>
-			<!-- 允许使用表达式 -->
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		<attribute>
-			<name>username</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		<attribute>
-			<name>password</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		<attribute>
-			<name>sql</name>
+			<name>test</name>
 			<required>true</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 	</tag>
 	
 	<tag>
-		<!--修改器 -->
-		<name>bodyTag</name>
+		<!--choose标签 -->
+		<name>choose</name>
 		<!--该标签处理类的全限定名（必须元素） -->
-		<tag-class>com.xsh.tag.bodytag.ModifyBodyTag</tag-class>
+		<tag-class>com.xsh.tag2.simpletag.ChooseTag</tag-class>
+		<!--指明该标签主题类型） -->
+		<body-content>scriptless</body-content>
+	</tag>
+	
+	<tag>
+		<!--when判断标签 -->
+		<name>when</name>
+		<!--该标签处理类的全限定名（必须元素） -->
+		<tag-class>com.xsh.tag2.simpletag.WhenTag</tag-class>
+		<!--指明该标签主题类型） -->
+		<body-content>scriptless</body-content>
+		<attribute>
+			<name>test</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	
+	<tag>
+		<!--otherWise判断标签 -->
+		<name>otherWise</name>
+		<!--该标签处理类的全限定名（必须元素） -->
+		<tag-class>com.xsh.tag2.simpletag.OtherWiseTag</tag-class>
 		<!--指明该标签主题类型） -->
 		<body-content>scriptless</body-content>
 	</tag>

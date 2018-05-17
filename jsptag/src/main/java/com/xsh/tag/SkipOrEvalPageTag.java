@@ -7,7 +7,7 @@ import javax.servlet.jsp.tagext.TagSupport;
 /**
  * TagSupport之控制【是否执行标签结束后的内容】
  * 简单防盗链功能
- * @author Administrator
+ * @author shouhua.xiao
  *
  */
 public class SkipOrEvalPageTag extends TagSupport {

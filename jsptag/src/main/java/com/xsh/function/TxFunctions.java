@@ -2,7 +2,7 @@ package com.xsh.function;
 
 /**
  * 自定义函数标签:防xss跨域脚本
- * @author Administrator
+ * @author shouhua.xiao
  *
  */
 public class TxFunctions {

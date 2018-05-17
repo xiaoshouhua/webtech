@@ -5,12 +5,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>自定义标签-TagSupport之控制是否执行标签体内容</title>
+<title>自定义标签之BodyTag接口和BodyTagSupport类</title>
 </head>
 <body>
-<tx:skipOrEvalBody>
-	<h3>我是中国最大的个人开源网址,谁怕谁!!!www.xsh.org</h3>
-	<a href="hello.jsp">站内访问</a>
-</tx:skipOrEvalBody>
+<tx:bodyTag>
+	我是来自终极一班的汪大东！
+</tx:bodyTag>
 </body>
 </html>
