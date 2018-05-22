@@ -26,6 +26,8 @@
         <module>verfitycode</module>
         <module>convert-helper</module>
         <module>jsptag</module>
+        <module>sso</module>
+        <module>attack</module>
     </modules>
 
     <name>webtech</name>
