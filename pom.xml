@@ -28,6 +28,7 @@
         <module>jsptag</module>
         <module>sso</module>
         <module>attack</module>
+        <module>msg-server</module>
     </modules>
 
     <name>webtech</name>
