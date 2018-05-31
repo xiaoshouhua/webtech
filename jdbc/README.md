@@ -23,13 +23,23 @@
 		
 ##### 一.JDBC常用的API深入详解以及存储过程的调用
 	1.调用无参存储过程 
-	    
+		 CallableStatement c = conn.prepaeCall("call sp_select_nofilter1()");
+		 c.execute();
 	2.调用含入参存储过程 
-	    
-	3.调用含输出参数存储过程 
-	    
-	4.调用含输入，输出参存储过程 
-
+		 CallableStatement cs = conn.prepaeCall("call sp_select_nofilter2(?,?)");
+		 cs.setString(1,"xsh");
+		 cs.setString(2,"13633777888");
+		 cs.execute();
+	3.调用含输出参数存储过程
+		 CallableStatement cs = conn.prepaeCall("call sp_select_nofilter3(?)");
+		 cs.registerOutParameter(1,Types.INTEGER);//参数位置,参数类型
+		 cs.execute();
+	4.调用含输入，输出参存储过程 (第一个入参,第二个出参)
+		 CallableStatement cs = conn.prepaeCall("call sp_select_nofilter3(?,?)");
+		 cs.setString(1,"xsh");
+		 cs.registerOutParameter(2,Types.INTEGER);//参数位置,参数类型
+		 cs.execute();
+		 
 ##### 二.JDBC的事务管理 
 	概念：
 	    事务（TRANSACTION）是作为单个逻辑工作单元执行的一系列操作，这些操作作为一个整体一起向系统提交，要么都执行，要么都不执行
@@ -64,6 +74,8 @@
     		
     	分类：
 		    DBCP:
+		    	    DBCP（DataBase Connection Pool）数据库连接池，是java数据库连接池的一种，
+		    	            由Apache开发，通过数据库连接池，可以让程序自动管理数据库连接的释放和断开
 			 
 		    C3P0：
 		        C3P0是一个开源的JDBC连接池，它实现了数据源和JNDI绑定，支持JDBC3和JDBC2的标准扩展.
@@ -105,4 +117,5 @@
 		    6.提供xml标签，支持编写动态sql
 				
 		缺点:
-				
+			1. SQL语句的编写工作量较大，尤其是字段多、关联表多时，更是如此，对开发人员编写SQL语句有一定要求。
+			2. SQL语句依赖于数据库，导致数据库移植性差，不能随意更换数据库。	
