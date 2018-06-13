@@ -30,6 +30,7 @@
         <module>attack</module>
         <module>msg-server</module>
         <module>jdbc</module>
+        <module>automation</module>
     </modules>
 
     <name>webtech</name>
