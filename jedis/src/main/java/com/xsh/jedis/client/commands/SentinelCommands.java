@@ -5,7 +5,7 @@ import java.util.Map;
 
 /**
  * 哨兵
- * @author Administrator
+ * @author shouhua.xiao
  *
  */
 public interface SentinelCommands {

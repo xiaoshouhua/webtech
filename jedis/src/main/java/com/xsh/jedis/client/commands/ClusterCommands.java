@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * 集群
- * @author Administrator
+ * @author shouhua.xiao
  *
  */
 public interface ClusterCommands {

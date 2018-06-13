@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * Lua脚本
- * @author Administrator
+ * @author shouhua.xiao
  *
  */
 public interface ScriptingCommands {
