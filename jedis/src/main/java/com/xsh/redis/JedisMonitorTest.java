@@ -14,7 +14,7 @@ public class JedisMonitorTest {
 		Jedis jedis = null;
 		try {
 			// host 主机 port 端口 connectionTimeout：客户端连接超时 soTimeout：客户端读写超时
-			jedis = new Jedis("192.168.2.217", 6379, 10000, 10000);
+			jedis = new Jedis("192.168.1.111", 6379, 10000, 10000);
 			
 			//设置客户端名字,方便监控,容易识别客户端来源
 			jedis.clientSetname("hotel-client");

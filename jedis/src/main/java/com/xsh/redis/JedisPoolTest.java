@@ -58,7 +58,7 @@ public class JedisPoolTest {
 		//向连接池【归还】连接时是否做连接有效性检测(ping),无效连接会被移除,每次【归还】多执行一次ping命令,默认false
 		poolConfig.setTestOnReturn(GenericObjectPoolConfig.DEFAULT_TEST_ON_RETURN);
 		
-		jedisPool = new JedisPool(poolConfig, "192.168.2.217",6379, 10000);
+		jedisPool = new JedisPool(poolConfig, "192.168.1.111",6379, 10000);
 	}
 
 	public static void main(String[] args) {

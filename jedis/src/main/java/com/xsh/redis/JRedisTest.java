@@ -3,12 +3,7 @@ package com.xsh.redis;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.google.common.collect.Maps;
-
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisMonitor;
 
@@ -17,13 +12,11 @@ import redis.clients.jedis.JedisMonitor;
  */
 public class JRedisTest {
 
-	private static Logger logger = LoggerFactory.getLogger(JRedisTest.class);
-	
 	public static void config(){
 		Jedis jedis = null;
 		try {
 			//host 主机 port 端口 connectionTimeout：客户端连接超时 soTimeout：客户端读写超时
-			jedis = new Jedis("192.168.2.217",6379,10000,10000);
+			jedis = new Jedis("192.168.1.111",6379,10000,10000);
 			
 			//设置密码,如果有的话
 			//jedis.auth("fcpwd1305");
@@ -94,7 +87,7 @@ public class JRedisTest {
 			System.out.println(quit);
 			
 		} catch (Exception e) {
-			logger.error("获取Jedis链接失败:",e);
+			System.err.println("获取Jedis链接失败:"+e);
 		}finally{
 			if(null != jedis){
 				jedis.close();
@@ -108,7 +101,7 @@ public class JRedisTest {
 		Jedis jedis = null;
 		try {
 			//host 主机 port 端口 connectionTimeout：客户端连接超时 soTimeout：客户端读写超时
-			jedis = new Jedis("192.168.2.217",6379,10000,10000);
+			jedis = new Jedis("192.168.1.111",6379,10000,10000);
 			
 			//设置密码,如果有的话
 			//jedis.auth("fcpwd1305");
@@ -168,7 +161,7 @@ public class JRedisTest {
 			System.out.println(quit);
 			
 		} catch (Exception e) {
-			logger.error("获取Jedis链接失败:",e);
+			System.err.println("获取Jedis链接失败:"+e);
 		}finally{
 			if(null != jedis){
 				jedis.close();
@@ -180,7 +173,7 @@ public class JRedisTest {
 		System.out.println("------------------------- hash -------------------------------");
 		Jedis jedis = null;
 		try {
-			jedis = new Jedis("192.168.2.217",6379,10000,10000);
+			jedis = new Jedis("192.168.1.111",6379,10000,10000);
 			
 			String key = "myhash";
 			
@@ -205,7 +198,7 @@ public class JRedisTest {
 		System.out.println("------------------------- list -------------------------------");
 		Jedis jedis = null;
 		try {
-			jedis = new Jedis("192.168.2.217",6379,10000,10000);
+			jedis = new Jedis("192.168.1.111",6379,10000,10000);
 			
 			String key = "books";
 			
@@ -239,7 +232,7 @@ public class JRedisTest {
 		System.out.println("------------------------- set -------------------------------");
 		Jedis jedis = null;
 		try {
-			jedis = new Jedis("192.168.2.217",6379,10000,10000);
+			jedis = new Jedis("192.168.1.111",6379,10000,10000);
 			
 			String key = "bookSets";
 			
@@ -275,7 +268,7 @@ public class JRedisTest {
 		System.out.println("------------------------- Sorted Set -------------------------------");
 		Jedis jedis = null;
 		try {
-			jedis = new Jedis("192.168.2.217",6379,10000,10000);
+			jedis = new Jedis("192.168.1.111",6379,10000,10000);
 			
 			String key = "bookZSets";
 			
