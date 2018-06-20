@@ -31,6 +31,7 @@
         <module>msg-server</module>
         <module>jdbc</module>
         <module>automation</module>
+        <module>jms</module>
     </modules>
 
     <name>webtech</name>
