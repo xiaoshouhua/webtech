@@ -8,17 +8,71 @@
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>com.xsh.jms</groupId>
     <artifactId>activemq</artifactId>
+    
+    <properties>
+    	<spring.version>4.1.7.RELEASE</spring.version>
+    </properties>
 
 	<dependencies>
+	
+		<dependency>
+		  <groupId>junit</groupId>
+		  <artifactId>junit</artifactId>
+		  <version>4.12</version>
+		  <scope>test</scope>
+		</dependency>
 	
 		<!-- https://mvnrepository.com/artifact/org.apache.activemq/activemq-all -->
 		<dependency>
 		    <groupId>org.apache.activemq</groupId>
 		    <artifactId>activemq-all</artifactId>
 		    <version>5.14.4</version>
+		</dependency>
+		
+		
+		<!-- spring相关依赖 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		
+		<!-- jms -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jms</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.apache.activemq/activemq-core -->
+		<dependency>
+		    <groupId>org.apache.activemq</groupId>
+		    <artifactId>activemq-core</artifactId>
+		    <version>5.7.0</version>
+		    <exclusions>
+		    	<exclusion>
+		    		<groupId>org.springframework</groupId>
+					<artifactId>spring-context</artifactId>
+		    	</exclusion>	
+		    </exclusions>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+			<scope>test</scope>
 		</dependency>
 		
 	</dependencies>
