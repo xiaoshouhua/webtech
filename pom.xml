@@ -32,6 +32,8 @@
         <module>jdbc</module>
         <module>automation</module>
         <module>jms</module>
+        <module>netty</module>
+        <module>memcache</module>
     </modules>
 
     <name>webtech</name>
