@@ -34,6 +34,7 @@
         <module>jms</module>
         <module>netty</module>
         <module>memcache</module>
+        <module>storm</module>
     </modules>
 
     <name>webtech</name>
