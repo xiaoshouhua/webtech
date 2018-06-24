@@ -35,6 +35,7 @@
         <module>netty</module>
         <module>memcache</module>
         <module>storm</module>
+        <module>role</module>
     </modules>
 
     <name>webtech</name>
