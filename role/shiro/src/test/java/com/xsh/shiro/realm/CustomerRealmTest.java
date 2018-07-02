@@ -1,26 +1,32 @@
-package com.xsh.shiro;
-
+package com.xsh.shiro.realm;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.mgt.DefaultSecurityManager;
-import org.apache.shiro.realm.SimpleAccountRealm;
 import org.apache.shiro.subject.Subject;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class AuthenticationTest {
+public class CustomerRealmTest {
 	
-	SimpleAccountRealm realm = null;
+	CustomerRealm realm = null;
+	
 	Subject subject = null;
 
 	@Before
 	public void setUp() throws Exception {
-		realm = new SimpleAccountRealm();
-		realm.addAccount("xiaoshouhua", "123456","admin");
+		realm = new CustomerRealm();
 		
 		//1.创建SecurityManager
 		DefaultSecurityManager securityManager =  new   DefaultSecurityManager();
+		
+		//散列配置
+		HashedCredentialsMatcher matcher = new HashedCredentialsMatcher();
+		matcher.setHashAlgorithmName("md5");//设置加密算法
+		matcher.setHashIterations(1);//加密次数
+		
+		realm.setCredentialsMatcher(matcher);
 		securityManager.setRealm(realm);
 		
 		//2.主体提交认证/授权
@@ -57,10 +63,9 @@ public class AuthenticationTest {
 		UsernamePasswordToken token = new UsernamePasswordToken("xiaoshouhua","123456");
 		subject.login(token);
 		
-		//4.1 验证登录结果
-		System.out.println("是否认证成功:"+subject.isAuthenticated());
 		//4.2 验证授权结果
 		subject.checkRole("admin");
+		
+		subject.checkPermissions("admin:delete","admin:view");
 	}
-
 }

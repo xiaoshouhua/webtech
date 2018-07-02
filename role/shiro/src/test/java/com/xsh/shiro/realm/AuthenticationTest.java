@@ -1,25 +1,22 @@
-package com.xsh.shiro;
+package com.xsh.shiro.realm;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.mgt.DefaultSecurityManager;
 import org.apache.shiro.realm.SimpleAccountRealm;
-import org.apache.shiro.realm.text.IniRealm;
 import org.apache.shiro.subject.Subject;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class IniRealmTest {
-
-	IniRealm realm = null;
+public class AuthenticationTest {
 	
+	SimpleAccountRealm realm = null;
 	Subject subject = null;
 
 	@Before
 	public void setUp() throws Exception {
-		realm = new IniRealm("classpath:user.ini");
-		
+		realm = new SimpleAccountRealm();
 		realm.addAccount("xiaoshouhua", "123456","admin");
 		
 		//1.创建SecurityManager

@@ -30,6 +30,47 @@
 		jdbcRealm：	
 		
 	自定义Realm：
+		1.继承AuthorizingRealm
+		2.重写doGetAuthenticationInfo(认证),doGetAuthorizationInfo(授权)方法 
 		
 		
-				
+####　Shiro散列配置 
+	1.HashedCredentialsMatcher 
+	2.自定义Realm中使用散列 
+	3.盐的使用            	
+	
+### Shiro集成Spring
+	
+	1.增加jar依赖
+	    
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+            <version>1.4.0</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-web</artifactId>
+            <version>1.4.0</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+            <version>1.4.0</version>
+        </dependency>
+	    
+	2.增加shiro过滤器
+	    
+        <!-- 设置 Shiro 的过滤器 -->
+	    <filter>
+	        <filter-name>shiroFilter</filter-name>
+	        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	    </filter>
+	    <filter-mapping>
+	        <filter-name>shiroFilter</filter-name>
+	        <url-pattern>/*</url-pattern>
+	    </filter-mapping>	
+	    
+	3.增加shiro过滤器
