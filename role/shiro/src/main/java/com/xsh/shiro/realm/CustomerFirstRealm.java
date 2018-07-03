@@ -1,9 +1,11 @@
 package com.xsh.shiro.realm;
 
+import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Map;
+import java.util.List;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+
+import javax.annotation.Resource;
 
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -15,18 +17,13 @@ import org.apache.shiro.crypto.hash.Md5Hash;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
+import com.xsh.shiro.dao.UserDao;
+import com.xsh.shiro.vo.User;
 
 public class CustomerFirstRealm extends AuthorizingRealm {
 	
-	Map<String,String> userMap = new ConcurrentHashMap<String,String>();
-	{
-		//userMap.put("xiaoshouhua", "e10adc3949ba59abbe56e057f20f883e");
-		//【加盐】
-		userMap.put("xiaoshouhua", "6e5fc47014927795ea6ddc2567c3bd44");
-		userMap.put("root", "fcea920f7412b5da7be0cf42b8c93759");
-		userMap.put("admin", "admin");
-		super.setName("customerRealm");
-	}
+	@Resource(name="userDao")
+	private UserDao userDao;
 
 	//2.授权方法
 	@Override
@@ -37,7 +34,7 @@ public class CustomerFirstRealm extends AuthorizingRealm {
 		
 		//2.从数据库或者缓存中获取角色数据
 		Set<String> roles = getRolesByUserName(userName);
-		Set<String> permissions = getPermissionsByUserName(userName);
+		Set<String> permissions = getPermissionsByRoles(roles);
 		
 		SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo(roles);
 		authorizationInfo.setStringPermissions(permissions);
@@ -67,26 +64,22 @@ public class CustomerFirstRealm extends AuthorizingRealm {
 	
 	//模拟数据库凭证,可替换为从数据库或缓存中获取
 	private Set<String> getRolesByUserName(String userName) {
-		Set<String> roles = new HashSet<String>();
-		roles.add("admin");
-		roles.add("user");
-		return roles;
+		List<String> roles = userDao.getRolesByUserName(userName);
+		return new HashSet<String>(roles);
 	}
 
 	//模拟数据库凭证,可替换为从数据库或缓存中获取
-	private Set<String> getPermissionsByUserName(String userName) {
-		Set<String> permissions = new HashSet<String>();
-		permissions.add("admin:edit");
-		permissions.add("admin:delete");
-		permissions.add("admin:view");
-		permissions.add("user:edit");
-		permissions.add("user:view");
-		return permissions;
+	private Set<String> getPermissionsByRoles(Set<String> roles) {
+		return new HashSet<String>(userDao.getPermissionsByRoles(new ArrayList<String>(roles)));
 	}
 
 	private String getPasswordByUserName(String userName) {
-		//TODO 可替换为从数据库或缓存中获取
-		return userMap.get(userName);
+		//从数据库获取
+		User user = userDao.getPasswordByUserName(userName);
+		if(null != user) {
+			return user.getPassword();
+		}
+		return null;
 	}
 	
 	public static void main(String[] args) {

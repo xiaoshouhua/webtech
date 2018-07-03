@@ -73,4 +73,39 @@
 	        <url-pattern>/*</url-pattern>
 	    </filter-mapping>	
 	    
-	3.增加shiro过滤器
+	3.配置bean上下文
+		
+		<!-- 设置 Shiro 加盐策略 -->
+	    <bean id="credentialsMatcher" class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+	        <property name="hashAlgorithmName" value="md5" />
+	        <property name="hashIterations" value="1" />
+	    </bean>
+	
+		<bean id="realm" class="com.xsh.shiro.realm.CustomerFirstRealm">
+			<property name="credentialsMatcher" ref="credentialsMatcher" />
+		</bean>
+	
+		<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+			<property name="realm" ref="realm"></property>
+		</bean>
+	
+		<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+			<property name="securityManager" ref="securityManager"></property>
+			<property name="loginUrl" value="login.html"></property>
+			<property name="unauthorizedUrl" value="403.html"></property>
+			<property name="successUrl" value="index.jsp"></property>
+			<!-- 设置链接权限 -->
+			<property name="filterChainDefinitions">
+				<value>
+					/login.html = anon
+	                  /login = anon
+					/subLogin = anon
+					<!-- 
+	                                                  设置所有的URL都必须要认证过后才可以登录 
+	                    *：用于匹配零个或多个字符串
+	                    **：用于匹配路径中的零个或多个路径   
+	                -->
+					/** = authc
+				</value>
+			</property>
+		</bean>

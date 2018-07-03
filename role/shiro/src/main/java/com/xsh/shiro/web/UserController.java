@@ -5,6 +5,7 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authz.AuthorizationException;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,9 +29,19 @@ public class UserController {
 			logger.error("登录失败!",e);
 			return "登录失败!"+e.getMessage();
 		}
-		//4.验证登录结果
+		
 		System.out.println("是否认证成功:"+subject.isAuthenticated());
-		return "登录成功!";
+		System.out.println("是否拥有admin角色:"+subject.hasRole("admin"));		
+		if(!subject.hasRole("admin")) {
+			return "登录失败!没有admin角色!";
+		}
+		
+		try {
+			subject.checkPermission("update");
+		} catch (AuthorizationException e) {
+			return "登录失败!拥有admin角色但不拥有修改权限!"+e.getMessage();
+		}
+		return "登录成功!拥有admin角色且拥有修改权限";
 	}
 	
 }
