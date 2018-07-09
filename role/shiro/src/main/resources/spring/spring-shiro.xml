@@ -1,0 +1,96 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop.xsd
+    http://www.springframework.org/schema/util
+    http://www.springframework.org/schema/util/spring-util.xsd">
+    
+    <context:component-scan base-package="com.xsh.shiro">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+	<import resource="classpath:spring/spring-dao.xml"/>
+
+	<!-- 设置 Shiro 加盐策略 -->
+    <bean id="credentialsMatcher" class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+        <property name="hashAlgorithmName" value="md5" />
+        <property name="hashIterations" value="1" />
+    </bean>
+
+	<bean id="realm" class="com.xsh.shiro.realm.CustomerFirstRealm">
+		<property name="credentialsMatcher" ref="credentialsMatcher" />
+	</bean>
+
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="realm"></property>
+		<!-- <property name="sessionManager" ref="sessionManager"></property> -->
+		<!-- 自定义的SessionManager -->
+		<property name="sessionManager" ref="customerSessionManager"></property>
+		<!-- 自定义的CacheManager -->
+		<property name="cacheManager" ref="redisCacheManager"></property>
+		<!-- 记住我功能 -->
+		<property name="rememberMeManager" ref="cookieRememberMeManager"></property>
+	</bean>
+
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager"></property>
+		<property name="loginUrl" value="login.html"></property>
+		<property name="unauthorizedUrl" value="403.html"></property>
+		<property name="successUrl" value="index.jsp"></property>
+		<!-- 设置链接权限 -->
+		<property name="filterChainDefinitions">
+			<value>
+				/login.html = anon
+                /login = anon
+				/subLogin = anon
+				<!-- 
+                                                  设置所有的URL都必须要认证过后才可以登录 
+                    *：用于匹配零个或多个字符串
+                    **：用于匹配路径中的零个或多个路径   
+                -->
+                /testPerms = perms["update"]
+                /testUnPerms = perms["update","add"]
+                /testRolesOr = rolesOr["admin","user"]
+				/** = authc
+			</value>
+		</property>
+		<!-- ##1011 -->
+		<property name="filters">
+			<util:map>
+				<entry key="rolesOr" value-ref="rolesOrFilter"></entry>
+			</util:map>
+		</property>
+	</bean>
+	
+	<!-- ##1011 -->
+	<bean id="rolesOrFilter" class="com.xsh.shiro.filter.RolesOrFilter"></bean>
+
+	
+	<bean id="redisSessionDao" class="com.xsh.shiro.session.RedisSessionDao" />
+
+	<!-- <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+		<property name="sessionDAO" ref="redisSessionDao"></property>
+	</bean> -->
+	<bean id="customerSessionManager" class="com.xsh.shiro.session.CustomerSessionManager">
+		<property name="sessionDAO" ref="redisSessionDao"></property>
+	</bean>
+	
+	<bean id="redisCacheManager" class="com.xsh.shiro.cache.RedisCacheManager"></bean>
+	
+	
+	<!-- 记住我 -->
+	<bean id="cookieRememberMeManager" class="org.apache.shiro.web.mgt.CookieRememberMeManager">
+		<property name="cookie" ref="myCookie"></property>
+	</bean>
+	<bean id="myCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+		<constructor-arg value="rememberMe"></constructor-arg>
+		<property name="maxAge" value="20000000"></property>
+	</bean>
+</beans>

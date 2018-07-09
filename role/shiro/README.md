@@ -109,3 +109,19 @@
 				</value>
 			</property>
 		</bean>
+		
+#### shiro内置过滤器：
+	1)anon,authBasic,authc,user,logout
+	2)perms,roles,ssl,port		
+	
+#### shiro会话管理
+	1.SessionManager、SessionDAO 
+	
+	2.Redis实现Session共享
+	 
+	3.Redis实现Session共享存在的问题	
+	
+#### shiro缓存管理
+	1.CacheManager、Cache
+	  
+	2.Redis实现CacheManager

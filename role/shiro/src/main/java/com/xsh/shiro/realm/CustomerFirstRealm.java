@@ -28,7 +28,7 @@ public class CustomerFirstRealm extends AuthorizingRealm {
 	//2.授权方法
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-		
+
 		//1.获取用户名
 		String userName = (String)principals.getPrimaryPrincipal();
 		
@@ -64,16 +64,19 @@ public class CustomerFirstRealm extends AuthorizingRealm {
 	
 	//模拟数据库凭证,可替换为从数据库或缓存中获取
 	private Set<String> getRolesByUserName(String userName) {
+		System.out.println("do Read DB 1...");
 		List<String> roles = userDao.getRolesByUserName(userName);
 		return new HashSet<String>(roles);
 	}
 
 	//模拟数据库凭证,可替换为从数据库或缓存中获取
 	private Set<String> getPermissionsByRoles(Set<String> roles) {
+		System.out.println("do Read DB 2...");
 		return new HashSet<String>(userDao.getPermissionsByRoles(new ArrayList<String>(roles)));
 	}
 
 	private String getPasswordByUserName(String userName) {
+		System.out.println("do Read DB 3...");
 		//从数据库获取
 		User user = userDao.getPasswordByUserName(userName);
 		if(null != user) {
