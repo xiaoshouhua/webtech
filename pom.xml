@@ -36,6 +36,8 @@
         <module>memcache</module>
         <module>storm</module>
         <module>role</module>
+        <module>LBS</module>
+        <module>template</module>
     </modules>
 
     <name>webtech</name>
